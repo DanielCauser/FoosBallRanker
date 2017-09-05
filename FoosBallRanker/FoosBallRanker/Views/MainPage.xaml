@@ -3,9 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="FoosBallRanker.Views.MainPage"
-             Title="MainPage">
-  <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-    <Label Text="{Binding Title}" />
-  </StackLayout>
+             x:Class="FoosBallRanker.Views.MainPage">
+	<StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+		<!--<Label Text="{Binding Title}" />-->
+		<Grid>
+			<Image x:Name="BgImage" 
+                   Source="bg.jpg"
+                   Aspect="AspectFill" />
+
+			<Frame OutlineColor="Accent" 
+                   WidthRequest="300" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand">
+
+				<StackLayout>
+					<Label Text="The FoosBall RANK!"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+
+					<Button BackgroundColor="Blue"
+                            TextColor="White"
+                            Text="Connect with Facebook" />
+
+					<Button BackgroundColor="Red"
+                            TextColor="White"
+                            Text="Connect with Google" />
+				</StackLayout>
+			</Frame>
+		</Grid>
+	</StackLayout>
 </ContentPage>
