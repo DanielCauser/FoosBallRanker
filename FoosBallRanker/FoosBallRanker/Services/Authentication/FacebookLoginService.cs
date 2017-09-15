@@ -30,7 +30,7 @@ namespace FoosBallRanker.Services.Authentication
 
 			var accessToken = ExtractAccessTokenFromUrl(e.Url);
 
-            if (string.IsNullOrEmpty(accessToken))
+            if (!string.IsNullOrEmpty(accessToken))
                 await GetFacebookProfileAsync(accessToken);
 		}
 
