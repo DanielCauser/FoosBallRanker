@@ -25,10 +25,11 @@
                             TextColor="White"
                             Text="Connect with Facebook"
                             Command="{Binding LoginWithFacebookCommand}"/>
-
+					
 					<Button BackgroundColor="Red"
                             TextColor="White"
-                            Text="Connect with Google" />
+                            Text="Connect with Google"
+							Command="{Binding LoginWithGoogleCommand}"/>
 				</StackLayout>
 			</Frame>
 		</Grid>

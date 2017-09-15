@@ -12,19 +12,30 @@ namespace FoosBallRanker.ViewModels
 	public class MainPageViewModel : BindableBase
     {
         public WebView Auth { get; set; }
+
 		public DelegateCommand LoginWithFacebookCommand { get; set; }
-        private readonly INavigationService _navigationService;
+
+		public DelegateCommand LoginWithGoogleCommand { get; set; }
+
+		private readonly INavigationService _navigationService;
 
 		public MainPageViewModel(INavigationService navigationService)
 		{
             _navigationService = navigationService;
-			LoginWithFacebookCommand = new DelegateCommand(Login);
+			LoginWithFacebookCommand = new DelegateCommand(LoginFacebook);
+			LoginWithGoogleCommand = new DelegateCommand(LoginGoogle);
 		}
 
-        private void Login()
+        private void LoginFacebook()
         {
-            //TODO: call service
-            _navigationService.NavigateAsync("NavigationPage/AuthPage");
+			var pm = new NavigationParameters("Auth=Facebook");
+			_navigationService.NavigateAsync("NavigationPage/AuthPage", pm);
         }
+
+		private void LoginGoogle()
+		{
+			var pm = new NavigationParameters("Auth=Google");
+			_navigationService.NavigateAsync("NavigationPage/AuthPage", pm);
+		}
 	}
 }
