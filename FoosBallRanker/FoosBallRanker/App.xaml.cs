@@ -1,6 +1,7 @@
 ﻿using Prism.Unity;
 using FoosBallRanker.Views;
 using Xamarin.Forms;
+using FoosBallRanker.ViewModels;
 
 namespace FoosBallRanker
 {
@@ -12,11 +13,12 @@ namespace FoosBallRanker
 		{
 			InitializeComponent();
 
-			NavigationService.NavigateAsync("NavigationPage/MainPage?title=Hello%20from%20Xamarin.Forms");
+			NavigationService.NavigateAsync("MainPage");
 		}
 
 		protected override void RegisterTypes()
 		{
+            Container.RegisterTypeForNavigation<AuthPage, AuthPageViewModel>();
 			Container.RegisterTypeForNavigation<NavigationPage>();
 			Container.RegisterTypeForNavigation<MainPage>();
 		}

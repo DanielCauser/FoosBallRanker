@@ -4,37 +4,27 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FoosBallRanker.Services.Authentication;
+using Xamarin.Forms;
 
 namespace FoosBallRanker.ViewModels
 {
-	public class MainPageViewModel : BindableBase, INavigationAware
-	{
-		private string _title;
-		public string Title
+	public class MainPageViewModel : BindableBase
+    {
+        public WebView Auth { get; set; }
+		public DelegateCommand LoginWithFacebookCommand { get; set; }
+        private readonly INavigationService _navigationService;
+
+		public MainPageViewModel(INavigationService navigationService)
 		{
-			get { return _title; }
-			set { SetProperty(ref _title, value); }
+            _navigationService = navigationService;
+			LoginWithFacebookCommand = new DelegateCommand(Login);
 		}
 
-		public MainPageViewModel()
-		{
-
-		}
-
-		public void OnNavigatedFrom(NavigationParameters parameters)
-		{
-
-		}
-
-		public void OnNavigatingTo(NavigationParameters parameters)
-		{
-
-		}
-
-		public void OnNavigatedTo(NavigationParameters parameters)
-		{
-			if (parameters.ContainsKey("title"))
-				Title = (string)parameters["title"] + " and Prism";
-		}
+        private void Login()
+        {
+            //TODO: call service
+            _navigationService.NavigateAsync("NavigationPage/AuthPage");
+        }
 	}
 }
