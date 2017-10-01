@@ -34,8 +34,7 @@ namespace FoosBallRanker.ViewModels
 
 		private void LoginGoogle()
 		{
-			var pm = new NavigationParameters("Auth=Google");
-			_navigationService.NavigateAsync("NavigationPage/AuthPage", pm);
+			new GoogleLoginService().Execute();
 		}
 	}
 }

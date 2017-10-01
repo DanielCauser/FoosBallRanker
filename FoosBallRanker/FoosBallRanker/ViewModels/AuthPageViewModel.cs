@@ -19,9 +19,7 @@ namespace FoosBallRanker.ViewModels
 		public void OnNavigatedTo(NavigationParameters parameters)
 		{
 			var authType = parameters.GetValue<string>("Auth");
-			if (authType == "Google")
-				AuthWebView = new GoogleLoginService().Execute();
-			else if (authType == "Facebook")
+			if (authType == "Facebook")
 				AuthWebView = new FacebookLoginService().Execute();
 		}
 
